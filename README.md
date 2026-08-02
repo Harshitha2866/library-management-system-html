@@ -230,7 +230,7 @@ Shri Vishnu Engineering College for Women
 
 GitHub: https://github.com/Harshitha2866
 
-LinkedIn: Add your LinkedIn profile here.
+LinkedIn: (https://www.linkedin.com/in/harshitha-minnikanti-24a682354/)
 
 ---
 
