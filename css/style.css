@@ -1,0 +1,129 @@
+/* Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #021526;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Main Container */
+
+.container {
+    width: 92%;
+    max-width: 1300px;
+    margin: 30px auto;
+}
+
+/* Sections */
+
+section {
+    margin-bottom: 25px;
+}
+
+/* Links */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Buttons */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Inputs */
+
+input,
+select,
+textarea {
+    font-family: inherit;
+    outline: none;
+}
+
+/* Images */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Utility Classes */
+
+.hidden {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.shadow {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.card {
+    background: #032444;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #021526;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0A4D8C;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1468B3;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+}
