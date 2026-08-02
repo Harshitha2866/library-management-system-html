@@ -10,6 +10,12 @@ app.use(express.json());
 
 const bookRoutes = require("./routes/bookRoutes");
 
+console.log("Book routes loaded");
+
+app.use("/api/books", bookRoutes);
+
+console.log("Routes registered");
+
 app.use("/api/books", bookRoutes);
 
 const PORT = process.env.PORT || 5000;
