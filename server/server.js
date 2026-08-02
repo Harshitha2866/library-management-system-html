@@ -9,6 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 const bookRoutes = require("./routes/bookRoutes");
+app.get("/test", (req, res) => {
+    res.json({ message: "Test route works" });
+});
 
 console.log("Book routes loaded");
 
