@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>User Dashboard | Library Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h1>
+            Library Management System
+        </h1>
+
+        <div class="nav-links">
+
+            <a
+                href="user.html"
+                class="active"
+            >
+                Dashboard
+            </a>
+
+            <a href="books.html">
+                Books
+            </a>
+
+            <a
+                href="#"
+                onclick="logout()"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-title">
+
+            <h2>
+                User Dashboard
+            </h2>
+
+            <p>
+                Browse the library and manage
+                the books you have borrowed.
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- BROWSE BOOKS -->
+
+            <div class="dashboard-card">
+
+                <h3>
+                    Browse Books
+                </h3>
+
+                <p>
+                    View the complete library
+                    collection and check
+                    available copies.
+                </p>
+
+                <a
+                    href="books.html"
+                    class="dashboard-btn"
+                >
+                    View Books
+                </a>
+
+            </div>
+
+
+
+            <!-- BORROW BOOKS -->
+
+            <div class="dashboard-card">
+
+                <h3>
+                    Borrow Books
+                </h3>
+
+                <p>
+                    Borrow an available copy
+                    of any book from the library.
+                </p>
+
+                <a
+                    href="books.html"
+                    class="dashboard-btn"
+                >
+                    Borrow a Book
+                </a>
+
+            </div>
+
+
+
+            <!-- RETURN BOOKS -->
+
+            <div class="dashboard-card">
+
+                <h3>
+                    Return Books
+                </h3>
+
+                <p>
+                    Return books that you
+                    have previously borrowed.
+                </p>
+
+                <a
+                    href="books.html"
+                    class="dashboard-btn"
+                >
+                    Return a Book
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © Library Management System |
+            Developed by Harshitha Minnikanti
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/auth.js"></script>
+
+    <script>
+
+        requireLogin("user");
+
+    </script>
+
+</body>
+
+</html>

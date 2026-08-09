@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Library Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h1>
+            Library Management System
+        </h1>
+
+        <div class="nav-links">
+
+            <a href="admin.html" class="active">
+                Dashboard
+            </a>
+
+            <a href="books.html">
+                Books
+            </a>
+
+            <a href="add-book.html">
+                Add Book
+            </a>
+
+            <a href="#" onclick="logout()">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+        <div class="page-title">
+
+            <h2>
+                Admin Dashboard
+            </h2>
+
+            <p>
+                Manage the library collection
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- MANAGE BOOKS -->
+
+            <div class="dashboard-card">
+
+                <h3>
+                    Manage Books
+                </h3>
+
+                <p>
+                    View all books and manage
+                    the library collection.
+                </p>
+
+                <a href="books.html" class="dashboard-btn">
+                    View Books
+                </a>
+
+            </div>
+
+
+
+            <!-- ADD BOOK -->
+
+            <div class="dashboard-card">
+
+                <h3>
+                    Add Book
+                </h3>
+
+                <p>
+                    Add a new book and specify
+                    the number of available copies.
+                </p>
+
+                <a href="add-book.html" class="dashboard-btn">
+                    Add New Book
+                </a>
+
+            </div>
+
+
+
+            <!-- ADMIN ACCESS -->
+
+            <div class="dashboard-card">
+
+                <h3>
+                    Admin Access
+                </h3>
+
+                <p>
+                    As an administrator you can
+                    add, edit and delete books.
+                </p>
+
+                <a href="books.html" class="dashboard-btn">
+                    Manage Collection
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © Library Management System |
+            Developed by Harshitha Minnikanti
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/auth.js"></script>
+
+    <script>
+        requireLogin("admin");
+    </script>
+
+</body>
+
+</html>

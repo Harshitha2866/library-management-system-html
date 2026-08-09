@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Books | Library Management System</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/books.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h1>
+            Library Management System
+        </h1>
+
+
+        <div class="nav-links">
+
+            <a href="#" id="homeLink">
+                Home
+            </a>
+
+            <a href="books.html" class="active">
+                Books
+            </a>
+
+            <a href="add-book.html" id="addBookLink">
+                Add Book
+            </a>
+
+            <a href="#" onclick="logout()">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+
+        <!-- Page Title -->
+
+        <div class="page-title">
+
+            <h2>
+                Library Books
+            </h2>
+
+        </div>
+
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input type="text" id="searchInput" placeholder="Search by Title or Author" onkeyup="searchBooks()">
+
+        </div>
+
+
+
+        <!-- Books Table -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>
+                            Title
+                        </th>
+
+                        <th>
+                            Author
+                        </th>
+
+                        <th>
+                            Price
+                        </th>
+
+                        <th>
+                            Total Copies
+                        </th>
+
+                        <th>
+                            Available
+                        </th>
+
+                        <th>
+                            Borrowed
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="bookTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © Library Management System |
+            Developed by Harshitha Minnikanti
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/api.js"></script>
+
+    <script src="js/books.js"></script>
+
+    <script>
+
+        // Set Home according to logged-in role
+
+        const homeLink =
+            document.getElementById("homeLink");
+
+        const addBookLink =
+            document.getElementById("addBookLink");
+
+
+        if (currentUser.role === "admin") {
+
+            homeLink.href = "admin.html";
+
+        } else {
+
+            homeLink.href = "user.html";
+
+            addBookLink.style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html>

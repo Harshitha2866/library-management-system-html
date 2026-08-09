@@ -112,6 +112,16 @@ tbody tr:hover {
     background:#4caf50;
     color:#fff;
 }
+
+.borrow-btn {
+    background: #3c8be1;
+    color: #ffffff;
+}
+
+.borrow-btn:hover {
+    background: #4d0f9e;
+}
+
 .edit-btn:disabled{
     opacity:0.5;
     cursor:not-allowed;

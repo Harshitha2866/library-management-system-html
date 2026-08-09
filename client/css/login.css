@@ -1,0 +1,275 @@
+/* =========================================
+   LOGIN PAGE
+   Uses the existing Library Management
+   System dark theme
+========================================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+
+/* Main Login Container */
+
+.login-wrapper {
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.login-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-header h1 {
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    margin: 0;
+    font-size: 17px;
+}
+
+
+/* =========================================
+   LOGIN CARDS
+========================================= */
+
+.login-grid {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 30px;
+}
+
+.login-card {
+    flex: 1;
+}
+
+
+.login-card {
+    background: #032444;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+.login-card h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.login-icon {
+    font-size: 32px;
+}
+
+
+.login-description {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.login-group {
+    margin-bottom: 18px;
+}
+
+
+.login-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 500;
+}
+
+
+.login-group input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #486581;
+    border-radius: 6px;
+
+    background: #021526;
+    color: white;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+.login-group input:focus {
+    border-color: #0A4D8C;
+}
+
+
+/* Placeholder */
+
+.login-group input::placeholder {
+    color: #9aa8b5;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-button {
+    width: 100%;
+
+    padding: 12px 15px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #0A4D8C;
+    color: white;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.login-button:hover {
+    background: #1565C0;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.login-message {
+    min-height: 20px;
+
+    margin: 5px 0 12px;
+
+    font-size: 14px;
+
+    color: #ff6b6b;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.login-footer {
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 13px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+    .login-grid {
+        flex-direction: column;
+    }
+
+    .login-page {
+        padding: 25px 15px;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+}
+
+/* =========================================
+   DEMO CREDENTIALS
+========================================= */
+
+.demo-credentials {
+    margin-top: 25px;
+    padding: 22px 25px;
+
+    background: #032444;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+}
+
+.demo-credentials h3 {
+    margin: 0 0 7px;
+}
+
+.demo-credentials > p {
+    margin-bottom: 18px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.demo-account {
+    background: #021526;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    text-align: left;
+}
+
+.demo-account h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.demo-account p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.demo-account small {
+    display: block;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+
+@media (max-width: 768px) {
+
+    .demo-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

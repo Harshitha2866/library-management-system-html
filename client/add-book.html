@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Add Book | Library Management System</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <h1>
+            Library Management System
+        </h1>
+
+
+        <div class="nav-links">
+
+            <a href="admin.html">
+                Home
+            </a>
+
+            <a href="books.html">
+                Books
+            </a>
+
+            <a
+                href="add-book.html"
+                class="active"
+            >
+                Add Book
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="container">
+
+        <div class="form-container">
+
+            <h2>
+                Add New Book
+            </h2>
+
+
+            <form id="bookForm">
+
+
+                <!-- BOOK ID -->
+
+                <div class="form-group">
+
+                    <label for="bookId">
+                        Book ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="bookId"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- AUTHOR -->
+
+                <div class="form-group">
+
+                    <label for="author">
+                        Author
+                    </label>
+
+                    <input
+                        type="text"
+                        id="author"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PRICE -->
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- TOTAL COPIES -->
+
+                <div class="form-group">
+
+                    <label for="totalCopies">
+                        Total Copies
+                    </label>
+
+                    <input
+                        type="number"
+                        id="totalCopies"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Add Book
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <p>
+            © Library Management System |
+            Developed by Harshitha Minnikanti
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/api.js"></script>
+
+    <script src="js/addBook.js"></script>
+
+
+</body>
+
+</html>
