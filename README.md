@@ -65,6 +65,28 @@ The application uses role-based authentication to ensure that users and administ
 - Netlify — Frontend
 - Render — Backend
 
+## Screenshots
+
+### Login Page
+
+![Login Page](screenshots/login.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### Book Management
+
+![Book Management](screenshots/books.png)
+
+### User Dashboard
+
+![User Dashboard](screenshots/user-dashboard.png)
+
+### Borrow and Return
+
+![Borrow and Return](screenshots/borrow-return.png)
+
 ## Project Structure
 
 ```text
