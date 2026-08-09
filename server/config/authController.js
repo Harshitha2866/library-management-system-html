@@ -1,10 +1,7 @@
 const db = require("../config/db");
 const crypto = require("crypto");
 
-
-// =========================================
 // CREATE PASSWORD HASH
-// =========================================
 
 function hashPassword(password) {
 
@@ -15,10 +12,7 @@ function hashPassword(password) {
 }
 
 
-
-// =========================================
 // CREATE DEMO USERS
-// =========================================
 
 async function initializeAuthTables() {
 
@@ -45,7 +39,6 @@ async function initializeAuthTables() {
                 if (err) {
                     return reject(err);
                 }
-
 
                 // Create rentals table
                 db.query(
@@ -86,10 +79,7 @@ async function initializeAuthTables() {
 }
 
 
-
-// =========================================
 // CREATE DEMO USERS
-// =========================================
 
 function createDemoUsers(resolve, reject) {
 
@@ -196,10 +186,7 @@ function createDemoUsers(resolve, reject) {
 }
 
 
-
-// =========================================
 // LOGIN
-// =========================================
 
 exports.login = (req, res) => {
 
@@ -276,10 +263,7 @@ exports.login = (req, res) => {
                 result[0];
 
 
-
-            // =========================================
             // CREATE JWT-STYLE TOKEN
-            // =========================================
 
             const header = Buffer
                 .from(
@@ -349,10 +333,7 @@ exports.login = (req, res) => {
 };
 
 
-
-// =========================================
 // EXPORT INITIALIZER
-// =========================================
 
 exports.initializeAuthTables =
     initializeAuthTables;

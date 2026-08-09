@@ -1,6 +1,4 @@
-// =========================================
 // GET CURRENT LOGGED-IN USER
-// =========================================
 
 function getCurrentUser() {
 
@@ -18,10 +16,7 @@ function getCurrentUser() {
 }
 
 
-
-// =========================================
 // CHECK WHETHER USER IS LOGGED IN
-// =========================================
 
 function isLoggedIn() {
 
@@ -35,10 +30,7 @@ function isLoggedIn() {
 }
 
 
-
-// =========================================
 // LOGOUT
-// =========================================
 
 function logout() {
 
@@ -53,10 +45,7 @@ function logout() {
 }
 
 
-
-// =========================================
 // PROTECT A PAGE
-// =========================================
 
 function requireLogin(requiredRole = null) {
 
@@ -96,10 +85,7 @@ function requireLogin(requiredRole = null) {
 }
 
 
-
-// =========================================
 // REDIRECT ALREADY LOGGED-IN USER
-// =========================================
 
 function redirectLoggedInUser() {
 

@@ -1,18 +1,13 @@
 const crypto = require("crypto");
 
-
-// =========================================
 // SECRET KEY
-// =========================================
 
 const JWT_SECRET =
     process.env.JWT_SECRET ||
     "library-management-change-this-secret";
 
 
-// =========================================
 // BASE64 URL FUNCTIONS
-// =========================================
 
 function base64UrlDecode(value) {
 
@@ -34,10 +29,7 @@ function base64UrlDecode(value) {
 }
 
 
-
-// =========================================
 // VERIFY TOKEN
-// =========================================
 
 function verifyToken(token) {
 
@@ -117,10 +109,7 @@ function verifyToken(token) {
 }
 
 
-
-// =========================================
 // AUTHENTICATE USER
-// =========================================
 
 function authenticateToken(
     req,
@@ -176,10 +165,7 @@ function authenticateToken(
 }
 
 
-
-// =========================================
 // ROLE CHECK
-// =========================================
 
 function requireRole(role) {
 
@@ -210,10 +196,7 @@ function requireRole(role) {
 }
 
 
-
-// =========================================
 // EXPORT
-// =========================================
 
 module.exports = {
 

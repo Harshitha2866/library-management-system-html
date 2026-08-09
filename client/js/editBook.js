@@ -1,13 +1,8 @@
-// =========================================
 // CHECK ADMIN LOGIN
-// =========================================
 
 const adminUser = requireLogin("admin");
 
-
-// =========================================
 // GET BOOK ID FROM URL
-// =========================================
 
 const params =
     new URLSearchParams(window.location.search);
@@ -15,11 +10,7 @@ const params =
 const bookId =
     params.get("id");
 
-
-
-// =========================================
 // EDIT BOOK BUTTON
-// =========================================
 
 function editBook(id) {
 
@@ -28,10 +19,7 @@ function editBook(id) {
 }
 
 
-
-// =========================================
 // LOAD BOOK DETAILS
-// =========================================
 
 async function loadBook() {
 
@@ -65,10 +53,7 @@ async function loadBook() {
             return;
         }
 
-
-        // =====================================
         // PUT BOOK DETAILS INTO FORM
-        // =====================================
 
         document.getElementById(
             "bookId"
@@ -114,10 +99,7 @@ async function loadBook() {
 }
 
 
-
-// =========================================
 // UPDATE BOOK
-// =========================================
 
 const editBookForm =
     document.getElementById(
@@ -133,10 +115,7 @@ if (editBookForm) {
 
             event.preventDefault();
 
-
-            // =================================
             // GET UPDATED VALUES
-            // =================================
 
             const updatedBook = {
 
@@ -165,10 +144,7 @@ if (editBookForm) {
                     )
             };
 
-
-            // =================================
             // VALIDATE COPIES
-            // =================================
 
             if (
                 updatedBook.total_copies < 1
@@ -184,9 +160,7 @@ if (editBookForm) {
 
             try {
 
-                // =================================
                 // SEND UPDATE TO BACKEND
-                // =================================
 
                 const response =
                     await fetchWithAuth(
@@ -210,10 +184,7 @@ if (editBookForm) {
                 const data =
                     await response.json();
 
-
-                // =================================
                 // SUCCESS
-                // =================================
 
                 if (response.ok) {
 
@@ -226,9 +197,7 @@ if (editBookForm) {
 
                 } else {
 
-                    // =================================
                     // ERROR
-                    // =================================
 
                     alert(
                         data.message ||
@@ -254,9 +223,5 @@ if (editBookForm) {
 }
 
 
-
-// =========================================
 // LOAD BOOK WHEN PAGE OPENS
-// =========================================
-
 loadBook();

@@ -1,9 +1,6 @@
 const db = require("../config/db");
 
-
-// =========================================
 // GET ALL BOOKS
-// =========================================
 
 exports.getAllBooks = (req, res) => {
 
@@ -47,10 +44,7 @@ exports.getAllBooks = (req, res) => {
 };
 
 
-
-// =========================================
 // GET BOOK BY ID
-// =========================================
 
 exports.getBookById = (req, res) => {
 
@@ -81,11 +75,8 @@ exports.getBookById = (req, res) => {
 };
 
 
-
-// =========================================
 // ADD BOOK
 // ADMIN ONLY
-// =========================================
 
 exports.addBook = (req, res) => {
 
@@ -146,11 +137,8 @@ exports.addBook = (req, res) => {
 };
 
 
-
-// =========================================
 // UPDATE BOOK
 // ADMIN ONLY
-// =========================================
 
 exports.updateBook = (req, res) => {
 
@@ -269,11 +257,8 @@ exports.updateBook = (req, res) => {
 };
 
 
-
-// =========================================
 // DELETE BOOK
 // ADMIN ONLY
-// =========================================
 
 exports.deleteBook = (req, res) => {
 
@@ -342,11 +327,8 @@ exports.deleteBook = (req, res) => {
 };
 
 
-
-// =========================================
 // BORROW BOOK
 // USER ONLY
-// =========================================
 
 exports.borrowBook = (req, res) => {
 
@@ -480,11 +462,8 @@ exports.borrowBook = (req, res) => {
 };
 
 
-
-// =========================================
 // RETURN BOOK
 // USER ONLY
-// =========================================
 
 exports.returnBook = (req, res) => {
 

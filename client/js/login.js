@@ -1,6 +1,4 @@
-// =========================================
 // LOGIN FUNCTION
-// =========================================
 
 async function login(role) {
 
@@ -73,9 +71,7 @@ async function login(role) {
         }
 
 
-        // =========================================
         // LOGIN SUCCESSFUL
-        // =========================================
 
         // Save authentication token
         localStorage.setItem(
@@ -119,9 +115,7 @@ async function login(role) {
 
 
 
-// =========================================
 // USER LOGIN FORM
-// =========================================
 
 const userLoginForm =
     document.getElementById("userLoginForm");
@@ -141,10 +135,7 @@ if (userLoginForm) {
 }
 
 
-
-// =========================================
 // ADMIN LOGIN FORM
-// =========================================
 
 const adminLoginForm =
     document.getElementById("adminLoginForm");

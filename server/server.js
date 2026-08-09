@@ -6,19 +6,14 @@ const cors = require("cors");
 const app = express();
 
 
-// =========================================
 // MIDDLEWARE
-// =========================================
 
 app.use(cors());
 
 app.use(express.json());
 
 
-
-// =========================================
 // AUTH ROUTES
-// =========================================
 
 const authRoutes =
     require("./routes/authRoutes");
@@ -29,10 +24,7 @@ app.use(
 );
 
 
-
-// =========================================
 // BOOK ROUTES
-// =========================================
 
 const bookRoutes =
     require("./routes/bookRoutes");
@@ -43,20 +35,14 @@ app.use(
 );
 
 
-
-// =========================================
 // INITIALIZE AUTH DATABASE
-// =========================================
 
 const {
     initializeAuthTables
 } = require("./controllers/authController");
 
 
-
-// =========================================
 // START SERVER
-// =========================================
 
 const PORT =
     process.env.PORT || 5000;

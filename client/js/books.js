@@ -1,9 +1,6 @@
-// =========================================
 // CHECK LOGIN
-// =========================================
 
 const currentUser = requireLogin();
-
 
 // Stop if nobody is logged in
 if (!currentUser) {
@@ -11,10 +8,7 @@ if (!currentUser) {
 }
 
 
-
-// =========================================
 // LOAD BOOKS
-// =========================================
 
 async function loadBooks() {
 
@@ -22,7 +16,6 @@ async function loadBooks() {
 
         const response =
             await fetchWithAuth(API_URL);
-
 
         // Get response data
         const books =
@@ -39,21 +32,17 @@ async function loadBooks() {
             return;
         }
 
-
         // Get table body
         const tableBody =
             document.getElementById(
                 "bookTableBody"
             );
 
-
         // Clear old rows
         tableBody.innerHTML = "";
 
 
-        // =====================================
         // DISPLAY EACH BOOK
-        // =====================================
 
         books.forEach(book => {
 
@@ -63,12 +52,9 @@ async function loadBooks() {
                 Number(book.available_copies);
 
 
-            // =================================
             // ADMIN ACTIONS
-            // =================================
 
             let adminActions = "";
-
 
             if (
                 currentUser.role === "admin"
@@ -94,9 +80,7 @@ async function loadBooks() {
             }
 
 
-            // =================================
             // USER ACTION
-            // =================================
 
             let userAction = "";
 
@@ -106,9 +90,7 @@ async function loadBooks() {
             ) {
 
 
-                // =================================
                 // USER BOOK ACTION
-                // =================================
 
                 if (Number(book.borrowed_by_me) === 1) {
 
@@ -157,10 +139,7 @@ async function loadBooks() {
             }
 
 
-
-            // =================================
             // CREATE TABLE ROW
-            // =================================
 
             tableBody.innerHTML += `
 
@@ -229,10 +208,7 @@ async function loadBooks() {
 }
 
 
-
-// =========================================
 // ESCAPE HTML
-// =========================================
 
 function escapeHtml(value) {
 
@@ -265,10 +241,7 @@ function escapeHtml(value) {
 }
 
 
-
-// =========================================
 // SEARCH BOOKS
-// =========================================
 
 function searchBooks() {
 
@@ -308,11 +281,8 @@ function searchBooks() {
 }
 
 
-
-// =========================================
 // EDIT BOOK
 // ADMIN ONLY
-// =========================================
 
 function editBook(id) {
 
@@ -333,11 +303,8 @@ function editBook(id) {
 }
 
 
-
-// =========================================
 // DELETE BOOK
 // ADMIN ONLY
-// =========================================
 
 async function deleteBook(id) {
 
@@ -405,11 +372,8 @@ async function deleteBook(id) {
 }
 
 
-
-// =========================================
 // BORROW BOOK
 // USER ONLY
-// =========================================
 
 async function borrowBook(id) {
 
@@ -465,11 +429,8 @@ async function borrowBook(id) {
 }
 
 
-
-// =========================================
 // RETURN BOOK
 // USER ONLY
-// =========================================
 
 async function returnBook(id) {
 
@@ -525,9 +486,5 @@ async function returnBook(id) {
 }
 
 
-
-// =========================================
 // LOAD BOOKS WHEN PAGE OPENS
-// =========================================
-
 loadBooks();

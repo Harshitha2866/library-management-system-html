@@ -3,18 +3,13 @@ const crypto = require("crypto");
 const db = require("../config/db");
 
 
-// =========================================
 // SECRET KEY
-// =========================================
 
 const JWT_SECRET =
     process.env.JWT_SECRET ||
     "library-management-change-this-secret";
 
-
-// =========================================
 // DATABASE QUERY HELPER
-// =========================================
 
 function query(sql, params = []) {
 
@@ -41,10 +36,7 @@ function query(sql, params = []) {
 }
 
 
-
-// =========================================
 // PASSWORD HASHING
-// =========================================
 
 function hashPassword(password) {
 
@@ -71,10 +63,7 @@ function hashPassword(password) {
 }
 
 
-
-// =========================================
 // VERIFY PASSWORD
-// =========================================
 
 function verifyPassword(
     password,
@@ -130,10 +119,7 @@ function verifyPassword(
 }
 
 
-
-// =========================================
 // BASE64 URL ENCODING
-// =========================================
 
 function base64UrlEncode(value) {
 
@@ -146,10 +132,7 @@ function base64UrlEncode(value) {
 }
 
 
-
-// =========================================
 // CREATE LOGIN TOKEN
-// =========================================
 
 function createToken(user) {
 
@@ -218,16 +201,11 @@ function createToken(user) {
 }
 
 
-
-// =========================================
 // CREATE REQUIRED TABLES
-// =========================================
 
 async function initializeAuthTables() {
 
-    // ================================
     // USERS TABLE
-    // ================================
 
     await query(`
 
@@ -253,9 +231,7 @@ async function initializeAuthTables() {
 
 
 
-    // ================================
     // BORROWING TABLE
-    // ================================
 
     await query(`
 
@@ -291,9 +267,7 @@ async function initializeAuthTables() {
 
 
 
-    // =========================================
     // DEMO ADMIN ACCOUNT
-    // =========================================
 
     const adminUsername =
         process.env.ADMIN_USERNAME ||
@@ -348,9 +322,7 @@ async function initializeAuthTables() {
 
 
 
-    // =========================================
     // DEMO USER ACCOUNT
-    // =========================================
 
     const userUsername =
         process.env.USER_USERNAME ||
@@ -406,9 +378,7 @@ async function initializeAuthTables() {
 
 
 
-// =========================================
 // LOGIN
-// =========================================
 
 async function login(req, res) {
 
@@ -421,9 +391,7 @@ async function login(req, res) {
         } = req.body;
 
 
-        // =====================================
         // VALIDATE INPUT
-        // =====================================
 
         if (
             !username ||
@@ -440,9 +408,7 @@ async function login(req, res) {
         }
 
 
-        // =====================================
         // VALIDATE ROLE
-        // =====================================
 
         if (
             role !== "admin" &&
@@ -458,9 +424,7 @@ async function login(req, res) {
         }
 
 
-        // =====================================
         // FIND USER
-        // =====================================
 
         const users =
             await query(
@@ -488,9 +452,7 @@ async function login(req, res) {
             );
 
 
-        // =====================================
         // CHECK USER + PASSWORD
-        // =====================================
 
         if (
             users.length === 0 ||
@@ -508,10 +470,7 @@ async function login(req, res) {
             });
         }
 
-
-        // =====================================
         // USER INFORMATION
-        // =====================================
 
         const user = {
 
@@ -526,17 +485,13 @@ async function login(req, res) {
         };
 
 
-        // =====================================
         // CREATE TOKEN
-        // =====================================
 
         const token =
             createToken(user);
 
 
-        // =====================================
         // SEND RESPONSE
-        // =====================================
 
         res.json({
 
@@ -569,9 +524,7 @@ async function login(req, res) {
 
 
 
-// =========================================
 // EXPORT
-// =========================================
 
 module.exports = {
 

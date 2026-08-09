@@ -2,10 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-
-// =========================================
 // BOOK CONTROLLER
-// =========================================
 
 const {
     getAllBooks,
@@ -18,9 +15,7 @@ const {
 } = require("../controllers/bookController");
 
 
-// =========================================
 // AUTHENTICATION MIDDLEWARE
-// =========================================
 
 const {
     authenticateToken,
@@ -28,10 +23,7 @@ const {
 } = require("../middleware/authMiddleware");
 
 
-
-// =========================================
 // VIEW BOOKS
-// =========================================
 
 // Both USER and ADMIN can view books
 
@@ -49,10 +41,7 @@ router.get(
 );
 
 
-
-// =========================================
 // ADMIN OPERATIONS
-// =========================================
 
 // Only ADMIN can add a book
 
@@ -84,10 +73,7 @@ router.delete(
 );
 
 
-
-// =========================================
 // USER BORROW / RETURN
-// =========================================
 
 // Only USER can borrow a book
 
@@ -109,9 +95,5 @@ router.put(
 );
 
 
-
-// =========================================
 // EXPORT
-// =========================================
-
 module.exports = router;
