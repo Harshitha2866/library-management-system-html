@@ -35,6 +35,20 @@ router.get(
 );
 
 
+// RENTAL RECORDS
+
+// Only ADMIN can view rental records
+
+router.get(
+    "/rentals",
+    authenticateToken,
+    requireRole("admin"),
+    getAllRentals
+);
+
+
+// VIEW SINGLE BOOK
+
 router.get(
     "/:id",
     authenticateToken,
@@ -95,13 +109,7 @@ router.put(
     returnBook
 );
 
-router.get(
-    "/rentals",
-    authenticateToken,
-    requireRole("admin"),
-    getAllRentals
-);
 
-router.get("/:id", authenticateToken, getBookById);
 // EXPORT
+
 module.exports = router;
