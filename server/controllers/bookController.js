@@ -1,5 +1,6 @@
 const db = require("../config/db");
 
+
 // GET ALL BOOKS
 
 exports.getAllBooks = (req, res) => {
@@ -57,6 +58,7 @@ exports.getBookById = (req, res) => {
         (err, result) => {
 
             if (err) {
+
                 return res.status(500).json({
                     message: err.message
                 });
@@ -90,6 +92,7 @@ exports.addBook = (req, res) => {
 
 
     // Check copies
+
     if (!total_copies || total_copies < 1) {
 
         return res.status(400).json({
@@ -161,6 +164,7 @@ exports.updateBook = (req, res) => {
 
 
     // First get the current book
+
     db.query(
         `SELECT total_copies, available_copies
          FROM books
@@ -194,12 +198,14 @@ exports.updateBook = (req, res) => {
 
 
             // Copies currently borrowed
+
             const borrowedCopies =
                 currentTotal - currentAvailable;
 
 
             // New total cannot be less
             // than currently borrowed copies
+
             if (total_copies < borrowedCopies) {
 
                 return res.status(400).json({
@@ -212,6 +218,7 @@ exports.updateBook = (req, res) => {
 
 
             // Calculate new available copies
+
             const newAvailableCopies =
                 total_copies - borrowedCopies;
 
@@ -291,6 +298,7 @@ exports.deleteBook = (req, res) => {
 
 
             // Don't delete if ANY copy is borrowed
+
             if (result[0].available_copies < 1) {
 
                 return res.status(400).json({
@@ -337,15 +345,23 @@ exports.borrowBook = (req, res) => {
     const userId = req.user.id;
 
 
-    // Check available copies
+    // Check whether this user
+    // already has this book
+
     db.query(
-        `SELECT available_copies
-         FROM books
-         WHERE book_id = ?`,
+        `SELECT id
+         FROM rentals
+         WHERE book_id = ?
+         AND user_id = ?
+         AND status = 'active'
+         LIMIT 1`,
 
-        [id],
+        [
+            id,
+            userId
+        ],
 
-        (err, result) => {
+        (err, existingRental) => {
 
             if (err) {
 
@@ -355,41 +371,29 @@ exports.borrowBook = (req, res) => {
             }
 
 
-            if (result.length === 0) {
+            // User already has this book
 
-                return res.status(404).json({
-                    message: "Book not found"
-                });
-            }
-
-
-            // No copies available
-            if (result[0].available_copies <= 0) {
+            if (existingRental.length > 0) {
 
                 return res.status(400).json({
 
                     message:
-                        "No copies of this book are currently available."
+                        "You have already borrowed this book. Please return it before borrowing it again."
 
                 });
             }
 
 
-            // Decrease available copies by 1
+            // Check available copies
+
             db.query(
-                `UPDATE books
-                 SET available_copies = available_copies - 1,
-                     available = CASE
-                         WHEN available_copies - 1 > 0
-                         THEN 1
-                         ELSE 0
-                     END
-                 WHERE book_id = ?
-                 AND available_copies > 0`,
+                `SELECT available_copies
+                 FROM books
+                 WHERE book_id = ?`,
 
                 [id],
 
-                (err, updateResult) => {
+                (err, result) => {
 
                     if (err) {
 
@@ -399,47 +403,45 @@ exports.borrowBook = (req, res) => {
                     }
 
 
-                    if (updateResult.affectedRows === 0) {
+                    if (result.length === 0) {
+
+                        return res.status(404).json({
+                            message: "Book not found"
+                        });
+                    }
+
+
+                    // No copies available
+
+                    if (result[0].available_copies <= 0) {
 
                         return res.status(400).json({
 
                             message:
-                                "No copies of this book are available."
+                                "No copies of this book are currently available."
 
                         });
                     }
 
 
-                    // Record the borrowing
+                    // Decrease available copies by 1
+
                     db.query(
-                        `INSERT INTO rentals
-                        (
-                            book_id,
-                            user_id,
-                            status
-                        )
-                        VALUES (?, ?, 'active')`,
+                        `UPDATE books
+                         SET available_copies = available_copies - 1,
+                             available = CASE
+                                 WHEN available_copies - 1 > 0
+                                 THEN 1
+                                 ELSE 0
+                             END
+                         WHERE book_id = ?
+                         AND available_copies > 0`,
 
-                        [
-                            id,
-                            userId
-                        ],
+                        [id],
 
-                        (err) => {
+                        (err, updateResult) => {
 
                             if (err) {
-
-                                // Restore the copy
-                                db.query(
-                                    `UPDATE books
-                                     SET available_copies =
-                                         available_copies + 1,
-                                         available = 1
-                                     WHERE book_id = ?`,
-
-                                    [id]
-                                );
-
 
                                 return res.status(500).json({
                                     message: err.message
@@ -447,12 +449,64 @@ exports.borrowBook = (req, res) => {
                             }
 
 
-                            res.json({
+                            if (updateResult.affectedRows === 0) {
 
-                                message:
-                                    "Book borrowed successfully"
+                                return res.status(400).json({
 
-                            });
+                                    message:
+                                        "No copies of this book are available."
+
+                                });
+                            }
+
+
+                            // Record the borrowing
+
+                            db.query(
+                                `INSERT INTO rentals
+                                (
+                                    book_id,
+                                    user_id,
+                                    status
+                                )
+                                VALUES (?, ?, 'active')`,
+
+                                [
+                                    id,
+                                    userId
+                                ],
+
+                                (err) => {
+
+                                    if (err) {
+
+                                        // Restore the copy
+
+                                        db.query(
+                                            `UPDATE books
+                                             SET available_copies =
+                                                 available_copies + 1,
+                                                 available = 1
+                                             WHERE book_id = ?`,
+
+                                            [id]
+                                        );
+
+
+                                        return res.status(500).json({
+                                            message: err.message
+                                        });
+                                    }
+
+
+                                    res.json({
+
+                                        message:
+                                            "Book borrowed successfully"
+
+                                    });
+                                }
+                            );
                         }
                     );
                 }
@@ -474,6 +528,7 @@ exports.returnBook = (req, res) => {
 
     // Check whether this user
     // borrowed this book
+
     db.query(
         `SELECT id
          FROM rentals
@@ -513,6 +568,7 @@ exports.returnBook = (req, res) => {
 
 
             // Mark borrowing as returned
+
             db.query(
                 `UPDATE rentals
                  SET status = 'returned',
@@ -532,6 +588,7 @@ exports.returnBook = (req, res) => {
 
 
                     // Increase available copies
+
                     db.query(
                         `UPDATE books
                          SET available_copies =
@@ -564,6 +621,11 @@ exports.returnBook = (req, res) => {
         }
     );
 };
+
+
+// GET ALL RENTALS
+// ADMIN ONLY
+
 exports.getAllRentals = (req, res) => {
 
     db.query(
@@ -580,18 +642,32 @@ exports.getAllRentals = (req, res) => {
             r.rented_at,
             r.returned_at,
             r.status
+
         FROM rentals r
-        JOIN users u ON r.user_id = u.id
-        JOIN books b ON r.book_id = b.book_id
+
+        JOIN users u
+            ON r.user_id = u.id
+
+        JOIN books b
+            ON r.book_id = b.book_id
+
         ORDER BY r.rented_at DESC
         `,
+
         (err, result) => {
 
             if (err) {
-                console.error("Get Rentals Error:", err);
+
+                console.error(
+                    "Get Rentals Error:",
+                    err
+                );
 
                 return res.status(500).json({
-                    message: "Failed to fetch rental information"
+
+                    message:
+                        "Failed to fetch rental information"
+
                 });
             }
 
