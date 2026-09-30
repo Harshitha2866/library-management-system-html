@@ -564,34 +564,38 @@ exports.returnBook = (req, res) => {
         }
     );
 };
-exports.getAllRentals = async (req, res) => {
-    try {
-        const rentals = await query(`
-            SELECT
-                r.id AS rental_id,
-                u.student_name,
-                u.student_reg_no,
-                u.email,
-                u.phone,
-                u.branch,
-                u.year,
-                b.title AS book_title,
-                r.rented_at,
-                r.returned_at,
-                r.status
-            FROM rentals r
-            JOIN users u ON r.user_id = u.id
-            JOIN books b ON r.book_id = b.book_id
-            ORDER BY r.rented_at DESC
-        `);
+exports.getAllRentals = (req, res) => {
 
-        res.json(rentals);
+    db.query(
+        `
+        SELECT
+            r.id AS rental_id,
+            u.student_name,
+            u.student_reg_no,
+            u.email,
+            u.phone,
+            u.branch,
+            u.year,
+            b.title AS book_title,
+            r.rented_at,
+            r.returned_at,
+            r.status
+        FROM rentals r
+        JOIN users u ON r.user_id = u.id
+        JOIN books b ON r.book_id = b.book_id
+        ORDER BY r.rented_at DESC
+        `,
+        (err, result) => {
 
-    } catch (error) {
-        console.error("Get Rentals Error:", error);
+            if (err) {
+                console.error("Get Rentals Error:", err);
 
-        res.status(500).json({
-            message: "Failed to fetch rental information"
-        });
-    }
+                return res.status(500).json({
+                    message: "Failed to fetch rental information"
+                });
+            }
+
+            res.json(result);
+        }
+    );
 };
