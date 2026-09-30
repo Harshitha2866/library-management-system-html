@@ -102,5 +102,6 @@ router.get(
     getAllRentals
 );
 
+router.get("/:id", authenticateToken, getBookById);
 // EXPORT
 module.exports = router;

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rental Records</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <style>
+        .rentals-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .rentals-container h1 {
+            margin-bottom: 25px;
+        }
+
+        .rentals-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            color: #222;
+            min-width: 1100px;
+        }
+
+        .rentals-table th,
+        .rentals-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .rentals-table th {
+            background: #0b1f3a;
+            color: white;
+        }
+
+        .rentals-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .status-active {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .status-returned {
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 18px;
+            background: #0b1f3a;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="rentals-container">
+
+        <a href="admin.html" class="back-btn">← Back to Admin Dashboard</a>
+
+        <h1>📚 Rental Records</h1>
+
+        <table class="rentals-table">
+
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Registration No.</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Branch</th>
+                    <th>Year</th>
+                    <th>Book</th>
+                    <th>Borrowed Date</th>
+                    <th>Returned Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="rentalsTableBody">
+                <tr>
+                    <td colspan="10">Loading rental records...</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/rentals.js"></script>
+
+</body>
+</html>
