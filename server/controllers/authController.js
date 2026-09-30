@@ -2,37 +2,35 @@ const crypto = require("crypto");
 
 const db = require("../config/db");
 
-
 // SECRET KEY
 
 const JWT_SECRET =
     process.env.JWT_SECRET ||
     "library-management-change-this-secret";
 
+
 // DATABASE QUERY HELPER
 
 function query(sql, params = []) {
 
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-            db.query(
-                sql,
-                params,
-                (err, result) => {
+        db.query(
+            sql,
+            params,
+            (err, result) => {
 
-                    if (err) {
-
-                        reject(err);
-
-                    } else {
-
-                        resolve(result);
-                    }
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
                 }
-            );
-        }
-    );
+
+            }
+        );
+
+    });
+
 }
 
 
@@ -40,14 +38,11 @@ function query(sql, params = []) {
 
 function hashPassword(password) {
 
-    // Create random salt
     const salt =
         crypto
             .randomBytes(16)
             .toString("hex");
 
-
-    // Create password hash
     const hash =
         crypto
             .scryptSync(
@@ -57,8 +52,6 @@ function hashPassword(password) {
             )
             .toString("hex");
 
-
-    // Store salt + hash
     return `${salt}:${hash}`;
 }
 
@@ -73,18 +66,14 @@ function verifyPassword(
     const parts =
         String(storedPassword).split(":");
 
-
     if (parts.length !== 2) {
-
         return false;
     }
-
 
     const [
         salt,
         storedHash
     ] = parts;
-
 
     try {
 
@@ -97,25 +86,23 @@ function verifyPassword(
                 )
                 .toString("hex");
 
-
         return crypto.timingSafeEqual(
-
             Buffer.from(
                 derivedHash,
                 "hex"
             ),
-
             Buffer.from(
                 storedHash,
                 "hex"
             )
-
         );
 
     } catch (error) {
 
         return false;
+
     }
+
 }
 
 
@@ -129,6 +116,7 @@ function base64UrlEncode(value) {
         .replace(/=/g, "")
         .replace(/\+/g, "-")
         .replace(/\//g, "_");
+
 }
 
 
@@ -137,51 +125,47 @@ function base64UrlEncode(value) {
 function createToken(user) {
 
     const header = {
-
         alg: "HS256",
-
         typ: "JWT"
-
     };
-
 
     const currentTime =
         Math.floor(
             Date.now() / 1000
         );
 
-
     const payload = {
 
         id: user.id,
 
-        username: user.username,
+        username:
+            user.username,
 
-        role: user.role,
+        role:
+            user.role,
 
         iat: currentTime,
 
         // Token expires after 8 hours
-        exp: currentTime + (8 * 60 * 60)
+
+        exp:
+            currentTime +
+            (8 * 60 * 60)
 
     };
-
 
     const encodedHeader =
         base64UrlEncode(
             JSON.stringify(header)
         );
 
-
     const encodedPayload =
         base64UrlEncode(
             JSON.stringify(payload)
         );
 
-
     const data =
         `${encodedHeader}.${encodedPayload}`;
-
 
     const signature =
         crypto
@@ -196,8 +180,8 @@ function createToken(user) {
             .replace(/\+/g, "-")
             .replace(/\//g, "_");
 
-
     return `${data}.${signature}`;
+
 }
 
 
@@ -223,15 +207,27 @@ async function initializeAuthTables() {
                 NOT NULL,
 
             created_at TIMESTAMP
-                DEFAULT CURRENT_TIMESTAMP
+                DEFAULT CURRENT_TIMESTAMP,
+
+            student_name VARCHAR(100),
+
+            email VARCHAR(150),
+
+            branch VARCHAR(100),
+
+            year INT,
+
+            student_reg_no VARCHAR(30)
+                UNIQUE,
+
+            phone VARCHAR(15)
 
         )
 
     `);
 
 
-
-    // BORROWING TABLE
+    // BORROWING / RENTALS TABLE
 
     await query(`
 
@@ -266,38 +262,30 @@ async function initializeAuthTables() {
     `);
 
 
-
     // DEMO ADMIN ACCOUNT
 
     const adminUsername =
         process.env.ADMIN_USERNAME ||
         "demo_admin";
 
-
     const adminPassword =
         process.env.ADMIN_PASSWORD ||
         "demo_admin123";
 
-
     const existingAdmin =
         await query(
-
             `
             SELECT id
             FROM users
             WHERE username = ?
             LIMIT 1
             `,
-
             [adminUsername]
-
         );
-
 
     if (existingAdmin.length === 0) {
 
         await query(
-
             `
             INSERT INTO users
             (
@@ -307,19 +295,17 @@ async function initializeAuthTables() {
             )
             VALUES (?, ?, 'admin')
             `,
-
             [
                 adminUsername,
                 hashPassword(adminPassword)
             ]
-
         );
 
         console.log(
             `Demo admin created: ${adminUsername}`
         );
-    }
 
+    }
 
 
     // DEMO USER ACCOUNT
@@ -328,31 +314,24 @@ async function initializeAuthTables() {
         process.env.USER_USERNAME ||
         "demo_user";
 
-
     const userPassword =
         process.env.USER_PASSWORD ||
         "demo_user123";
 
-
     const existingUser =
         await query(
-
             `
             SELECT id
             FROM users
             WHERE username = ?
             LIMIT 1
             `,
-
             [userUsername]
-
         );
-
 
     if (existingUser.length === 0) {
 
         await query(
-
             `
             INSERT INTO users
             (
@@ -362,20 +341,19 @@ async function initializeAuthTables() {
             )
             VALUES (?, ?, 'user')
             `,
-
             [
                 userUsername,
                 hashPassword(userPassword)
             ]
-
         );
 
         console.log(
             `Demo user created: ${userUsername}`
         );
-    }
-}
 
+    }
+
+}
 
 
 // LOGIN
@@ -405,6 +383,7 @@ async function login(req, res) {
                     "Username, password and role are required"
 
             });
+
         }
 
 
@@ -421,6 +400,7 @@ async function login(req, res) {
                     "Invalid role"
 
             });
+
         }
 
 
@@ -428,27 +408,41 @@ async function login(req, res) {
 
         const users =
             await query(
-
                 `
                 SELECT
+
                     id,
+
                     username,
+
                     password_hash,
-                    role
+
+                    role,
+
+                    student_name,
+
+                    email,
+
+                    branch,
+
+                    year,
+
+                    student_reg_no,
+
+                    phone
 
                 FROM users
 
                 WHERE username = ?
+
                 AND role = ?
 
                 LIMIT 1
                 `,
-
                 [
                     username,
                     role
                 ]
-
             );
 
 
@@ -468,19 +462,40 @@ async function login(req, res) {
                     "Invalid username or password"
 
             });
+
         }
+
 
         // USER INFORMATION
 
         const user = {
 
-            id: users[0].id,
+            id:
+                users[0].id,
 
             username:
                 users[0].username,
 
             role:
-                users[0].role
+                users[0].role,
+
+            student_name:
+                users[0].student_name,
+
+            email:
+                users[0].email,
+
+            branch:
+                users[0].branch,
+
+            year:
+                users[0].year,
+
+            student_reg_no:
+                users[0].student_reg_no,
+
+            phone:
+                users[0].phone
 
         };
 
@@ -498,12 +513,13 @@ async function login(req, res) {
             message:
                 "Login successful",
 
-            token: token,
+            token:
+                token,
 
-            user: user
+            user:
+                user
 
         });
-
 
     } catch (error) {
 
@@ -512,16 +528,16 @@ async function login(req, res) {
             error
         );
 
-
         res.status(500).json({
 
             message:
                 "Login failed"
 
         });
-    }
-}
 
+    }
+
+}
 
 
 // EXPORT
