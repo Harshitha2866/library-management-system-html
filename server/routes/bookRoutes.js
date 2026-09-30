@@ -11,7 +11,8 @@ const {
     updateBook,
     deleteBook,
     borrowBook,
-    returnBook
+    returnBook,
+    getAllRentals
 } = require("../controllers/bookController");
 
 
@@ -94,6 +95,12 @@ router.put(
     returnBook
 );
 
+router.get(
+    "/rentals",
+    authenticateToken,
+    requireRole("admin"),
+    getAllRentals
+);
 
 // EXPORT
 module.exports = router;
