@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,31 @@
         }
 
         .rentals-container h1 {
+            margin-bottom: 20px;
+        }
+
+        .rental-controls {
+            display: flex;
+            gap: 15px;
             margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .rental-controls input {
+            width: 400px;
+            max-width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .rental-controls select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            background: white;
         }
 
         .rentals-table {
@@ -70,13 +95,47 @@
 
     <div class="rentals-container">
 
-        <a href="admin.html" class="back-btn">← Back to Admin Dashboard</a>
+        <a href="admin.html" class="back-btn">
+            ← Back to Admin Dashboard
+        </a>
 
         <h1>📚 Rental Records</h1>
+
+        <!-- Search and Filter -->
+
+        <div class="rental-controls">
+
+            <input
+                type="text"
+                id="rentalSearch"
+                placeholder="🔍 Search student, registration no. or book..."
+            >
+
+            <select id="statusFilter">
+
+                <option value="all">
+                    All Records
+                </option>
+
+                <option value="active">
+                    Active
+                </option>
+
+                <option value="returned">
+                    Returned
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Rental Table -->
 
         <table class="rentals-table">
 
             <thead>
+
                 <tr>
                     <th>Student Name</th>
                     <th>Registration No.</th>
@@ -89,21 +148,29 @@
                     <th>Returned Date</th>
                     <th>Status</th>
                 </tr>
+
             </thead>
 
+
             <tbody id="rentalsTableBody">
+
                 <tr>
-                    <td colspan="10">Loading rental records...</td>
+                    <td colspan="10">
+                        Loading rental records...
+                    </td>
                 </tr>
+
             </tbody>
 
         </table>
 
     </div>
 
+
     <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/rentals.js"></script>
 
 </body>
+
 </html>
