@@ -1,12 +1,14 @@
 
+/* NAVBAR */
+
 .navbar {
     width: 100%;
-    min-height: 100px;
-    padding: 22px 5%;
+    min-height: 78px;
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 22px;
     background: #FFFFFF;
     border-bottom: 1px solid #E1E6F0;
     box-shadow: 0 4px 18px rgba(32, 50, 90, 0.06);
@@ -19,9 +21,9 @@
     display: flex;
     align-items: center;
     font-family: 'Outfit', sans-serif;
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: -0.8px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
     color: #172B55;
     white-space: nowrap;
 }
@@ -31,21 +33,23 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
+    width: 42px;
+    height: 42px;
+    margin-right: 12px;
     background: #EEF2FF;
     color: #6535E8;
-    border-radius: 13px;
-    font-size: 28px;
+    border-radius: 11px;
+    font-size: 23px;
     flex-shrink: 0;
 }
+
+/* NAVIGATION LINKS */
 
 .nav-links {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
 }
 
@@ -53,13 +57,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 52px;
-    padding: 13px 23px;
-    border-radius: 11px;
+    min-height: 44px;
+    padding: 10px 17px;
+    border-radius: 9px;
     color: #596681;
     font-family: 'DM Sans', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
     transition: all 0.25s ease;
 }
 
@@ -71,11 +75,13 @@
 .nav-links a.active {
     background: #F0EDFF;
     color: #6535E8;
-    font-weight: 800;
+    font-weight: 700;
 }
 
+/* LOGOUT */
+
 .nav-links a[onclick*="logout"] {
-    margin-left: 8px;
+    margin-left: 5px;
     background: #FFF0F0;
     color: #D94A55;
 }
@@ -85,16 +91,18 @@
     color: #B92D39;
 }
 
+/* TABLET */
+
 @media (max-width: 900px) {
     .navbar {
-        padding: 20px 3%;
+        padding: 16px 3%;
         flex-direction: column;
-        gap: 18px;
+        gap: 13px;
     }
 
     .navbar h1 {
         justify-content: center;
-        font-size: 27px;
+        font-size: 23px;
     }
 
     .nav-links {
@@ -102,33 +110,35 @@
     }
 }
 
+/* MOBILE */
+
 @media (max-width: 520px) {
     .navbar {
-        padding: 16px 12px;
-        gap: 14px;
+        padding: 13px 12px;
+        gap: 11px;
     }
 
     .navbar h1 {
-        font-size: 21px;
+        font-size: 19px;
         white-space: normal;
     }
 
     .navbar h1::before {
-        width: 40px;
-        height: 40px;
-        font-size: 22px;
-        margin-right: 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        margin-right: 9px;
     }
 
     .nav-links {
         width: 100%;
-        gap: 6px;
+        gap: 5px;
     }
 
     .nav-links a {
-        min-height: 44px;
-        padding: 10px 13px;
-        font-size: 14px;
+        min-height: 39px;
+        padding: 8px 11px;
+        font-size: 12px;
     }
 
     .nav-links a[onclick*="logout"] {

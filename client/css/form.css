@@ -5,13 +5,13 @@
 
 .form-container {
     width: 100%;
-    max-width: 650px;
-    margin: 45px auto;
-    padding: 42px;
+    max-width: 570px;
+    margin: 32px auto;
+    padding: 30px;
     background: #FFFFFF;
     border: 1px solid #E6EAF2;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(32, 50, 90, 0.07);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(32, 50, 90, 0.07);
 }
 
 /* FORM HEADING */
@@ -20,18 +20,18 @@
     font-family: 'Outfit', sans-serif;
     text-align: center;
     color: #172B55;
-    font-size: 30px;
-    font-weight: 800;
-    margin-bottom: 32px;
-    letter-spacing: -0.6px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: -0.4px;
 }
 
 .form-container h2::after {
     content: "";
     display: block;
-    width: 55px;
-    height: 4px;
-    margin: 13px auto 0;
+    width: 48px;
+    height: 3px;
+    margin: 11px auto 0;
     background: linear-gradient(90deg, #3157D5, #7C9AFF);
     border-radius: 10px;
 }
@@ -41,28 +41,28 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 23px;
+    margin-bottom: 17px;
 }
 
 /* LABEL */
 
 .form-group label {
-    margin-bottom: 9px;
+    margin-bottom: 7px;
     color: #34415D;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 /* INPUT FIELDS */
 
 .form-group input {
     width: 100%;
-    padding: 15px 16px;
+    padding: 12px 14px;
     border: 1px solid #DFE5F0;
-    border-radius: 10px;
+    border-radius: 8px;
     background: #F9FAFD;
     color: #172033;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'DM Sans', sans-serif;
     transition: all 0.25s ease;
 }
@@ -76,6 +76,7 @@
 }
 
 .form-group input:focus {
+    outline: none;
     background: #FFFFFF;
     border-color: #3157D5;
     box-shadow: 0 0 0 4px rgba(49, 87, 213, 0.10);
@@ -93,24 +94,24 @@
 
 .submit-btn {
     width: 100%;
-    padding: 15px 20px;
-    margin-top: 10px;
+    padding: 13px 18px;
+    margin-top: 8px;
     border: none;
-    border-radius: 11px;
+    border-radius: 9px;
     background: linear-gradient(135deg, #3157D5, #5278EB);
     color: #FFFFFF;
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(49, 87, 213, 0.20);
+    box-shadow: 0 5px 14px rgba(49, 87, 213, 0.20);
     transition: all 0.25s ease;
 }
 
 .submit-btn:hover {
     background: linear-gradient(135deg, #2445B5, #3157D5);
     transform: translateY(-2px);
-    box-shadow: 0 9px 22px rgba(49, 87, 213, 0.28);
+    box-shadow: 0 8px 18px rgba(49, 87, 213, 0.28);
 }
 
 .submit-btn:active {
@@ -128,31 +129,31 @@
 @media (max-width: 768px) {
     .form-container {
         max-width: 100%;
-        margin: 25px auto;
-        padding: 28px 22px;
-        border-radius: 15px;
+        margin: 24px auto;
+        padding: 25px 22px;
+        border-radius: 14px;
     }
 
     .form-container h2 {
-        font-size: 26px;
-        margin-bottom: 26px;
+        font-size: 23px;
+        margin-bottom: 22px;
     }
 
     .form-group {
-        margin-bottom: 19px;
+        margin-bottom: 16px;
     }
 
     .form-group input {
-        padding: 13px 14px;
+        padding: 12px 13px;
     }
 }
 
 @media (max-width: 400px) {
     .form-container {
-        padding: 23px 17px;
+        padding: 21px 17px;
     }
 
     .form-container h2 {
-        font-size: 23px;
+        font-size: 21px;
     }
 }

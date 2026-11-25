@@ -13,9 +13,11 @@
     --success: #15966A;
     --danger: #E34D59;
     --warning: #E9A23B;
-    --radius: 16px;
-    --shadow: 0 8px 30px rgba(32, 50, 90, 0.07);
+    --radius: 14px;
+    --shadow: 0 8px 25px rgba(32, 50, 90, 0.06);
 }
+
+/* GLOBAL RESET */
 
 * {
     margin: 0;
@@ -27,6 +29,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* BODY */
 
 body {
     font-family: 'DM Sans', sans-serif;
@@ -35,59 +38,73 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    line-height: 1.6;
+    line-height: 1.5;
 }
+
+/* MAIN CONTAINER */
 
 .container {
     width: 92%;
-    max-width: 1400px;
-    margin: 35px auto;
+    max-width: 1350px;
+    margin: 28px auto;
     flex: 1;
 }
 
+/* HEADINGS */
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Outfit', sans-serif;
     color: var(--text);
     line-height: 1.3;
 }
+
+/* LINKS */
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
+/* BUTTONS */
+
 button {
     font-family: inherit;
     cursor: pointer;
     border: none;
-    outline: none;
 }
 
-input, select, textarea {
+/* INPUT ELEMENTS */
+
+input,
+select,
+textarea {
     font-family: inherit;
-    outline: none;
 }
+
+/* IMAGES */
 
 img {
     max-width: 100%;
     display: block;
 }
 
-.container {
-    width: 92%;
-    max-width: 1400px;
-    margin: 35px auto;
-}
+/* SECTIONS */
 
 section {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
 }
+
+/* TABLES */
 
 table {
     width: 100%;
     border-collapse: collapse;
 }
+
+/* UTILITY CLASSES */
 
 .hidden {
     display: none !important;
@@ -105,11 +122,13 @@ table {
     margin-bottom: 20px;
 }
 
+/* COMMON CARD */
+
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 25px;
+    padding: 22px;
     box-shadow: var(--shadow);
 }
 
@@ -117,9 +136,16 @@ table {
     box-shadow: var(--shadow);
 }
 
-button, a, input, select {
-    transition: all 0.25s ease;
+/* TRANSITIONS */
+
+button,
+a,
+input,
+select {
+    transition: all 0.2s ease;
 }
+
+/* ACCESSIBILITY */
 
 button:focus-visible,
 a:focus-visible,
@@ -129,10 +155,14 @@ select:focus-visible {
     outline-offset: 2px;
 }
 
+/* TEXT SELECTION */
+
 ::selection {
     background: #DCE5FF;
     color: #2445B5;
 }
+
+/* SCROLLBAR */
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -151,13 +181,7 @@ select:focus-visible {
     background: #8799BE;
 }
 
-@media (max-width: 768px) {
-    .container {
-        width: 94%;
-        margin: 22px auto;
-    }
-}
-
+/* FOOTER POSITION */
 
 body > .footer {
     margin-top: auto;
@@ -170,4 +194,17 @@ body > main {
 body > .rentals-container {
     flex: 1;
     min-height: 0;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+    .container {
+        width: 94%;
+        margin: 22px auto;
+    }
+
+    .card {
+        padding: 18px;
+    }
 }

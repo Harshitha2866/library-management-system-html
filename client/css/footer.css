@@ -5,8 +5,8 @@
 
 .footer {
     width: 100%;
-    margin-top: 65px;
-    padding: 27px 20px;
+    margin-top: 35px;
+    padding: 18px 20px;
     background: #FFFFFF;
     border-top: 1px solid #E6EAF2;
     text-align: center;
@@ -15,11 +15,11 @@
 
 .footer p {
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: #778198;
-    letter-spacing: 0.2px;
-    line-height: 1.8;
+    letter-spacing: 0.1px;
+    line-height: 1.6;
 }
 
 .footer p::first-letter {
@@ -37,11 +37,11 @@
 
 @media (max-width: 768px) {
     .footer {
-        margin-top: 40px;
-        padding: 22px 15px;
+        margin-top: 25px;
+        padding: 16px 12px;
     }
 
     .footer p {
-        font-size: 12px;
+        font-size: 11px;
     }
 }

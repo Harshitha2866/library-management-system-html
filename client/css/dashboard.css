@@ -1,7 +1,7 @@
 
 .container {
     width: 92%;
-    max-width: 1450px;
+    max-width: 1350px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -9,22 +9,22 @@
 /* PAGE TITLE */
 
 .page-title {
-    margin: 40px 0 32px;
+    margin: 30px 0 24px;
 }
 
 .page-title h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: 38px;
-    font-weight: 800;
-    letter-spacing: -0.8px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
     color: #172B55;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .page-title p {
     color: #778198;
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 /* DASHBOARD GRID */
@@ -32,8 +32,8 @@
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-    margin: 35px 0 40px;
+    gap: 22px;
+    margin: 28px 0 35px;
     align-items: stretch;
 }
 
@@ -45,30 +45,30 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: 320px;
-    padding: 36px;
+    min-height: 270px;
+    padding: 28px;
     background: #FFFFFF;
     border: 1px solid #E6EAF2;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(32, 50, 90, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(32, 50, 90, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dashboard-card::after {
     content: "";
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
-    right: -50px;
-    top: -50px;
+    right: -45px;
+    top: -45px;
     background: rgba(49, 87, 213, 0.05);
     pointer-events: none;
 }
 
 .dashboard-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 18px 40px rgba(32, 50, 90, 0.11);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 32px rgba(32, 50, 90, 0.10);
     border-color: #D6DFFF;
 }
 
@@ -78,11 +78,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
-    margin-bottom: 25px;
-    border-radius: 17px;
-    font-size: 30px;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 19px;
+    border-radius: 14px;
+    font-size: 25px;
     position: relative;
     z-index: 1;
 }
@@ -106,19 +106,19 @@
 
 .dashboard-card h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
     color: #172B55;
-    margin-bottom: 13px;
+    margin-bottom: 10px;
 }
 
 /* CARD DESCRIPTION */
 
 .dashboard-card p {
     color: #778198;
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 28px;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 22px;
     flex-grow: 1;
 }
 
@@ -128,11 +128,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 24px;
-    border-radius: 10px;
+    padding: 11px 20px;
+    border-radius: 8px;
     background: #EEF2FF;
     color: #3157D5;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     border: 1px solid transparent;
     cursor: pointer;
@@ -151,24 +151,24 @@
 .welcome-card {
     position: relative;
     overflow: hidden;
-    padding: 40px;
-    margin-bottom: 32px;
-    border-radius: 22px;
+    padding: 30px;
+    margin-bottom: 26px;
+    border-radius: 18px;
     background: linear-gradient(120deg, #2445B5, #5278EB);
-    box-shadow: 0 12px 28px rgba(49, 87, 213, 0.18);
+    box-shadow: 0 10px 25px rgba(49, 87, 213, 0.16);
 }
 
 .welcome-card h2 {
     font-family: 'Outfit', sans-serif;
     color: #FFFFFF;
-    font-size: 32px;
-    margin-bottom: 12px;
+    font-size: 26px;
+    margin-bottom: 9px;
 }
 
 .welcome-card p {
     color: #E5EBFF;
-    font-size: 17px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 1.65;
 }
 
 /* RESPONSIVE DESIGN */
@@ -176,7 +176,7 @@
 @media (max-width: 1100px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px;
+        gap: 20px;
     }
 }
 
@@ -186,49 +186,49 @@
     }
 
     .page-title {
-        margin: 28px 0;
+        margin: 24px 0;
     }
 
     .page-title h2 {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .page-title p {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .dashboard-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
-        margin-top: 24px;
+        gap: 16px;
+        margin-top: 22px;
     }
 
     .dashboard-card {
-        min-height: 270px;
-        padding: 28px;
+        min-height: 230px;
+        padding: 24px;
     }
 
     .dashboard-card h3 {
-        font-size: 23px;
+        font-size: 19px;
     }
 
     .dashboard-card p {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .dashboard-btn {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .welcome-card {
-        padding: 28px;
+        padding: 24px;
     }
 
     .welcome-card h2 {
-        font-size: 26px;
+        font-size: 22px;
     }
 
     .welcome-card p {
-        font-size: 15px;
+        font-size: 13px;
     }
 }
