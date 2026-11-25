@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 55px 20px;
+    padding: 35px 20px;
     background:
         linear-gradient(
             rgba(242, 245, 255, 0.84),
@@ -24,39 +24,39 @@
 
 .login-wrapper {
     width: 100%;
-    max-width: 900px;
+    max-width: 850px;
 }
 
 /* HEADER */
 
 .login-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
 
 .login-header h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(34px, 5vw, 46px);
+    font-size: clamp(28px, 4vw, 36px);
     font-weight: 800;
-    letter-spacing: -1.2px;
+    letter-spacing: -0.8px;
     color: #172B55;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .login-header h1::after {
     content: "";
     display: block;
-    width: 65px;
-    height: 4px;
+    width: 55px;
+    height: 3px;
     background: linear-gradient(90deg, #3157D5, #7C9AFF);
     border-radius: 10px;
-    margin: 15px auto 0;
+    margin: 12px auto 0;
 }
 
 .login-header p {
     color: #778198;
-    font-size: 16px;
-    margin-top: 12px;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 /* LOGIN TABS */
@@ -64,22 +64,22 @@
 .login-tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    max-width: 650px;
-    margin: 30px auto 25px;
-    padding: 8px;
+    gap: 8px;
+    max-width: 620px;
+    margin: 22px auto 20px;
+    padding: 7px;
     background: #E9EDF8;
-    border-radius: 13px;
+    border-radius: 12px;
 }
 
 .login-tab {
-    padding: 16px;
+    padding: 13px;
     border: none;
-    border-radius: 9px;
+    border-radius: 8px;
     background: transparent;
     color: #596681;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.25s ease;
@@ -104,13 +104,13 @@
 
 .login-card:not([hidden]) {
     display: block;
-    max-width: 620px;
+    max-width: 580px;
     width: 100%;
     margin: 0 auto;
-    padding: 38px;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.97);
     border: 1px solid #E5EAF5;
-    border-radius: 22px;
+    border-radius: 20px;
     box-shadow: 0 15px 40px rgba(32, 50, 90, 0.12);
     transition: box-shadow 0.3s ease;
 }
@@ -122,14 +122,14 @@
 /* LOGIN ICON */
 
 .login-icon {
-    width: 58px;
-    height: 58px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 27px;
+    font-size: 23px;
     background: #EEF2FF;
-    border-radius: 16px;
+    border-radius: 14px;
 }
 
 .admin-card .login-icon {
@@ -140,43 +140,43 @@
 
 .login-card h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: 29px;
+    font-size: 25px;
     font-weight: 700;
     color: #172B55;
-    margin-top: 14px;
-    margin-bottom: 8px;
+    margin-top: 12px;
+    margin-bottom: 7px;
 }
 
 .login-description {
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.6;
     color: #778198;
-    margin-bottom: 30px;
+    margin-bottom: 23px;
 }
 
 /* FORM FIELDS */
 
 .login-group {
-    margin-bottom: 22px;
+    margin-bottom: 17px;
 }
 
 .login-group label {
     display: block;
-    margin-bottom: 9px;
-    font-size: 15px;
+    margin-bottom: 7px;
+    font-size: 14px;
     font-weight: 600;
     color: #34415D;
 }
 
 .login-group input {
     width: 100%;
-    padding: 16px;
+    padding: 13px 15px;
     border: 1px solid #DFE5F0;
-    border-radius: 10px;
+    border-radius: 9px;
     background: #F9FAFD;
     color: #172033;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     transition: all 0.25s ease;
 }
 
@@ -195,13 +195,13 @@
 
 .login-button {
     width: 100%;
-    padding: 17px 18px;
+    padding: 14px 16px;
     border: none;
-    border-radius: 10px;
+    border-radius: 9px;
     background: linear-gradient(135deg, #3157D5, #5278EB);
     color: #FFFFFF;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(49, 87, 213, 0.20);
@@ -221,9 +221,9 @@
 /* ERROR MESSAGE */
 
 .login-message {
-    min-height: 20px;
-    margin: 5px 0 12px;
-    font-size: 14px;
+    min-height: 18px;
+    margin: 5px 0 10px;
+    font-size: 13px;
     font-weight: 500;
     color: #E34D59;
 }
@@ -231,11 +231,11 @@
 /* DEMO ACCOUNT */
 
 .login-card .demo-account {
-    margin-top: 25px;
-    padding: 23px;
+    margin-top: 20px;
+    padding: 18px;
     background: #F5F7FF;
     border: 1px solid #E1E7FA;
-    border-radius: 12px;
+    border-radius: 11px;
     transition: all 0.25s ease;
 }
 
@@ -246,14 +246,14 @@
 
 .login-card .demo-account h4 {
     font-family: 'Outfit', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: #3157D5;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .login-card .demo-account p {
-    margin: 8px 0;
-    font-size: 15px;
+    margin: 7px 0;
+    font-size: 13px;
     color: #4B5670;
     overflow-wrap: anywhere;
 }
@@ -264,9 +264,9 @@
 
 .login-card .demo-account small {
     display: block;
-    margin-top: 12px;
+    margin-top: 10px;
     color: #778198;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.5;
 }
 
@@ -274,8 +274,8 @@
 
 .login-footer {
     text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
+    margin-top: 22px;
+    font-size: 13px;
     color: #66738D;
 }
 
@@ -283,19 +283,19 @@
 
 @media (max-width: 768px) {
     .login-page {
-        padding: 35px 18px;
+        padding: 30px 18px;
     }
 
     .login-wrapper {
-        max-width: 600px;
+        max-width: 550px;
     }
 
     .login-header {
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .login-card:not([hidden]) {
-        padding: 30px;
+        padding: 26px;
     }
 }
 
@@ -303,16 +303,16 @@
 
 @media (max-width: 480px) {
     .login-page {
-        padding: 30px 14px;
+        padding: 25px 14px;
         background-attachment: scroll;
     }
 
     .login-header h1 {
-        font-size: 29px;
+        font-size: 26px;
     }
 
     .login-header p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .login-tabs {
@@ -321,27 +321,27 @@
     }
 
     .login-tab {
-        padding: 13px 7px;
-        font-size: 13px;
+        padding: 11px 7px;
+        font-size: 12px;
     }
 
     .login-card:not([hidden]) {
-        padding: 24px 20px;
+        padding: 22px 18px;
     }
 
     .login-card h2 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .login-description {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .login-group input {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .login-card .demo-account {
-        padding: 18px;
+        padding: 16px;
     }
 }
