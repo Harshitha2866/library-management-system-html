@@ -1,165 +1,234 @@
-/*WELCOME CARD*/
 
-.welcome-card {
-    background: #032444;
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+.container {
+    width: 92%;
+    max-width: 1450px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.welcome-card h2 {
-    font-size: 30px;
-    margin-bottom: 12px;
-    color: #ffffff;
+/* PAGE TITLE */
+
+.page-title {
+    margin: 40px 0 32px;
 }
 
-.welcome-card p {
-    color: #d9d9d9;
+.page-title h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: #172B55;
+    margin-bottom: 10px;
+}
+
+.page-title p {
+    color: #778198;
+    font-size: 17px;
     line-height: 1.7;
-    font-size: 16px;
 }
 
-
-/*DASHBOARD GRID*/
+/* DASHBOARD GRID */
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 25px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin: 35px 0 40px;
+    align-items: stretch;
 }
 
-
-/*DASHBOARD CARDS*/
+/* DASHBOARD CARDS */
 
 .dashboard-card {
-    background: #111d4a;
-    border-radius: 14px;
-    padding: 28px 24px;
-    text-align: center;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.25);
-
-    border: 1px solid rgba(79, 195, 247, 0.15);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 320px;
+    padding: 36px;
+    background: #FFFFFF;
+    border: 1px solid #E6EAF2;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(32, 50, 90, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-/* Hover Effect */
+.dashboard-card::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    right: -50px;
+    top: -50px;
+    background: rgba(49, 87, 213, 0.05);
+    pointer-events: none;
+}
 
 .dashboard-card:hover {
-    transform: translateY(-6px);
-
-    box-shadow:
-        0 16px 30px rgba(0, 0, 0, 0.35);
+    transform: translateY(-7px);
+    box-shadow: 0 18px 40px rgba(32, 50, 90, 0.11);
+    border-color: #D6DFFF;
 }
 
-
-/* CARD ICON */
+/* CARD ICONS */
 
 .dashboard-card::before {
-    display: block;
-
-    font-size: 38px;
-
-    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 25px;
+    border-radius: 17px;
+    font-size: 30px;
+    position: relative;
+    z-index: 1;
 }
-
-
-/* Different icons */
 
 .dashboard-card:nth-child(1)::before {
     content: "📚";
+    background: #EEF2FF;
 }
 
 .dashboard-card:nth-child(2)::before {
-    content: "➕";
+    content: "📖";
+    background: #E9F8F1;
 }
 
 .dashboard-card:nth-child(3)::before {
-    content: "🔐";
+    content: "↩️";
+    background: #FFF3E8;
 }
-
 
 /* CARD TITLE */
 
 .dashboard-card h3 {
-    color: #ffffff;
-
-    margin-bottom: 12px;
-
-    font-size: 22px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: #172B55;
+    margin-bottom: 13px;
 }
-
 
 /* CARD DESCRIPTION */
 
 .dashboard-card p {
-    color: #cfd8e3;
-
-    font-size: 15px;
-
-    font-weight: normal;
-
-    line-height: 1.6;
-
-    margin-bottom: 20px;
+    color: #778198;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    flex-grow: 1;
 }
-
 
 /* DASHBOARD BUTTON */
 
 .dashboard-btn {
-    display: inline-block;
-
-    background: #3949ab;
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    padding: 10px 22px;
-
-    border-radius: 7px;
-
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 10px;
+    background: #EEF2FF;
+    color: #3157D5;
     font-size: 15px;
-
-    font-weight: 600;
-
-    transition: 0.3s;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
-
 
 .dashboard-btn:hover {
-    background: #4f5fc4;
-
+    background: #3157D5;
+    color: #FFFFFF;
     transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(49, 87, 213, 0.20);
 }
 
+/* WELCOME CARD */
 
-/* RESPONSIVE */
+.welcome-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    margin-bottom: 32px;
+    border-radius: 22px;
+    background: linear-gradient(120deg, #2445B5, #5278EB);
+    box-shadow: 0 12px 28px rgba(49, 87, 213, 0.18);
+}
 
-@media (max-width: 1000px) {
+.welcome-card h2 {
+    font-family: 'Outfit', sans-serif;
+    color: #FFFFFF;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.welcome-card p {
+    color: #E5EBFF;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1100px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        width: 94%;
+    }
+
+    .page-title {
+        margin: 28px 0;
+    }
+
+    .page-title h2 {
+        font-size: 30px;
+    }
+
+    .page-title p {
+        font-size: 15px;
+    }
 
     .dashboard-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 24px;
     }
 
-}
-
-@media (max-width: 600px) {
-
     .dashboard-card {
-        padding: 24px 18px;
+        min-height: 270px;
+        padding: 28px;
     }
 
     .dashboard-card h3 {
-        font-size: 20px;
+        font-size: 23px;
     }
 
+    .dashboard-card p {
+        font-size: 15px;
+    }
+
+    .dashboard-btn {
+        font-size: 14px;
+    }
+
+    .welcome-card {
+        padding: 28px;
+    }
+
+    .welcome-card h2 {
+        font-size: 26px;
+    }
+
+    .welcome-card p {
+        font-size: 15px;
+    }
 }

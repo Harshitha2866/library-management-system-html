@@ -267,72 +267,69 @@ exports.updateBook = (req, res) => {
 // DELETE BOOK
 // ADMIN ONLY
 
-exports.deleteBook = (req, res) => {
 
+exports.deleteBook = (req, res) => {
     const { id } = req.params;
 
-
     db.query(
-        `SELECT available_copies
+        `SELECT book_id
          FROM books
          WHERE book_id = ?`,
-
         [id],
-
         (err, result) => {
-
             if (err) {
-
                 return res.status(500).json({
                     message: err.message
                 });
             }
 
-
             if (result.length === 0) {
-
                 return res.status(404).json({
                     message: "Book not found"
                 });
             }
 
-
-            // Don't delete if ANY copy is borrowed
-
-            if (result[0].available_copies < 1) {
-
-                return res.status(400).json({
-
-                    message:
-                        "Return all borrowed copies before deleting the book."
-
-                });
-            }
-
-
             db.query(
-                "DELETE FROM books WHERE book_id = ?",
+                `SELECT COUNT(*) AS active_rentals
+                 FROM rentals
+                 WHERE book_id = ?
+                 AND status = 'active'`,
                 [id],
-
-                (err) => {
-
+                (err, rentalResult) => {
                     if (err) {
-
                         return res.status(500).json({
                             message: err.message
                         });
                     }
 
+                    if (rentalResult[0].active_rentals > 0) {
+                        return res.status(400).json({
+                            message: "Cannot delete this book because it is currently borrowed by a student. Please wait until all copies are returned."
+                        });
+                    }
 
-                    res.json({
-                        message:
-                            "Book deleted successfully"
-                    });
+                    db.query(
+                        `DELETE FROM books
+                         WHERE book_id = ?`,
+                        [id],
+                        (err) => {
+                            if (err) {
+                                return res.status(500).json({
+                                    message: "Unable to delete this book. It may have existing rental history."
+                                });
+                            }
+
+                            res.json({
+                                message: "Book deleted successfully"
+                            });
+                        }
+                    );
                 }
             );
         }
     );
 };
+
 
 
 // BORROW BOOK

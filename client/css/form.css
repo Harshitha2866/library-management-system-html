@@ -1,87 +1,158 @@
-/* Form Container */
+
+/* =====================================
+   ADD / EDIT BOOK FORM
+===================================== */
 
 .form-container {
-    max-width: 700px;
-    margin: 40px auto;
-    background: #032444;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 650px;
+    margin: 45px auto;
+    padding: 42px;
+    background: #FFFFFF;
+    border: 1px solid #E6EAF2;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(32, 50, 90, 0.07);
 }
+
+/* FORM HEADING */
 
 .form-container h2 {
+    font-family: 'Outfit', sans-serif;
     text-align: center;
-    margin-bottom: 30px;
-    color: #ffffff;
+    color: #172B55;
     font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    letter-spacing: -0.6px;
 }
 
-/* Form Group */
+.form-container h2::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    margin: 13px auto 0;
+    background: linear-gradient(90deg, #3157D5, #7C9AFF);
+    border-radius: 10px;
+}
+
+/* FORM GROUP */
 
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 23px;
 }
+
+/* LABEL */
 
 .form-group label {
-    margin-bottom: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #ffffff;
+    margin-bottom: 9px;
+    color: #34415D;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-/* Inputs */
+/* INPUT FIELDS */
 
 .form-group input {
-    padding: 14px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    background: #021526;
-    color: #ffffff;
-    font-size: 16px;
-    transition: 0.3s;
+    width: 100%;
+    padding: 15px 16px;
+    border: 1px solid #DFE5F0;
+    border-radius: 10px;
+    background: #F9FAFD;
+    color: #172033;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s ease;
 }
 
 .form-group input::placeholder {
-    color: #b5b5b5;
+    color: #A3ADBF;
+}
+
+.form-group input:hover {
+    border-color: #B9C8F5;
 }
 
 .form-group input:focus {
-    border-color: #0A4D8C;
+    background: #FFFFFF;
+    border-color: #3157D5;
+    box-shadow: 0 0 0 4px rgba(49, 87, 213, 0.10);
 }
 
-/* Submit Button */
+/* READ ONLY FIELD */
+
+.form-group input:read-only {
+    background: #F0F2F7;
+    color: #778198;
+    cursor: not-allowed;
+}
+
+/* SUBMIT BUTTON */
 
 .submit-btn {
     width: 100%;
-    padding: 14px;
+    padding: 15px 20px;
     margin-top: 10px;
-    background: #0A4D8C;
-    color: #ffffff;
-    font-size: 17px;
-    font-weight: 600;
     border: none;
-    border-radius: 8px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #3157D5, #5278EB);
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    box-shadow: 0 6px 16px rgba(49, 87, 213, 0.20);
+    transition: all 0.25s ease;
 }
 
 .submit-btn:hover {
-    background: #1565C0;
+    background: linear-gradient(135deg, #2445B5, #3157D5);
     transform: translateY(-2px);
+    box-shadow: 0 9px 22px rgba(49, 87, 213, 0.28);
 }
 
-/* Responsive */
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* FORM SPACING */
+
+.form-container form {
+    width: 100%;
+}
+
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 768px) {
-
     .form-container {
-        padding: 25px;
-        margin: 20px auto;
+        max-width: 100%;
+        margin: 25px auto;
+        padding: 28px 22px;
+        border-radius: 15px;
     }
 
     .form-container h2 {
-        font-size: 24px;
+        font-size: 26px;
+        margin-bottom: 26px;
+    }
+
+    .form-group {
+        margin-bottom: 19px;
+    }
+
+    .form-group input {
+        padding: 13px 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .form-container {
+        padding: 23px 17px;
+    }
+
+    .form-container h2 {
+        font-size: 23px;
     }
 }

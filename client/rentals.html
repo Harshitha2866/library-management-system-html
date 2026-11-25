@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,167 +6,427 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Rental Records</title>
+    <title>Rental Records | Library Management System</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/dashboard.css">
 
     <style>
+        /* PAGE LAYOUT */
+
         .rentals-container {
-            padding: 30px;
-            overflow-x: auto;
+            width: 92%;
+            max-width: 1450px;
+            margin: 40px auto;
+            min-height: 65vh;
         }
 
-        .rentals-container h1 {
-            margin-bottom: 20px;
+        /* HEADER */
+
+        .rentals-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
+
+        .rentals-heading h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            color: #172B55;
+            margin-bottom: 8px;
+        }
+
+        .rentals-heading p {
+            color: #778198;
+            font-size: 14px;
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            background: #EEF2FF;
+            color: #3157D5;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: #3157D5;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTENT */
+
+        .rentals-content {
+            background: #FFFFFF;
+            padding: 28px;
+            border: 1px solid #E6EAF2;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(32, 50, 90, 0.05);
+        }
+
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 21px;
+            color: #172B55;
+            margin-bottom: 7px;
+        }
+
+        .section-description {
+            color: #778198;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        /* SEARCH AND FILTER */
 
         .rental-controls {
             display: flex;
+            align-items: center;
             gap: 15px;
-            margin-bottom: 25px;
             flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .rental-search {
+            flex: 1;
+            min-width: 240px;
+            position: relative;
+        }
+
+        .rental-search::before {
+            content: "⌕";
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #8995AD;
+            pointer-events: none;
         }
 
         .rental-controls input {
-            width: 400px;
-            max-width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 1px solid #DFE5F0;
+            border-radius: 10px;
+            background: #F9FAFD;
+            color: #172033;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        }
+
+        .rental-controls input:focus {
+            background: #FFFFFF;
+            border-color: #3157D5;
+            box-shadow: 0 0 0 4px rgba(49, 87, 213, 0.10);
         }
 
         .rental-controls select {
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            background: white;
+            min-width: 175px;
+            padding: 14px 15px;
+            border: 1px solid #DFE5F0;
+            border-radius: 10px;
+            background: #FFFFFF;
+            color: #45516B;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .rental-controls select:focus {
+            border-color: #3157D5;
+        }
+
+        /* TABLE */
+
+        .rentals-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid #E6EAF2;
+            border-radius: 12px;
         }
 
         .rentals-table {
             width: 100%;
+            min-width: 1150px;
             border-collapse: collapse;
-            background: #ffffff;
-            color: #222;
-            min-width: 1100px;
+            background: #FFFFFF;
         }
 
-        .rentals-table th,
-        .rentals-table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
+        .rentals-table thead {
+            background: #F3F5FC;
         }
 
         .rentals-table th {
-            background: #0b1f3a;
-            color: white;
+            padding: 17px 15px;
+            text-align: left;
+            color: #596681;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            border-bottom: 1px solid #E6EAF2;
         }
 
-        .rentals-table tr:nth-child(even) {
-            background: #f5f5f5;
+        .rentals-table td {
+            padding: 16px 15px;
+            color: #45516B;
+            font-size: 13px;
+            border-bottom: 1px solid #EDF0F6;
+            white-space: nowrap;
+        }
+
+        .rentals-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .rentals-table tbody tr:hover {
+            background: #F7F9FF;
+        }
+
+        .rentals-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* STATUS BADGES */
+
+        .status-active,
+        .status-returned {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: capitalize;
         }
 
         .status-active {
-            color: #d97706;
-            font-weight: bold;
+            background: #FFF4DF;
+            color: #C17A13;
         }
 
         .status-returned {
-            color: #15803d;
-            font-weight: bold;
+            background: #E8F8F0;
+            color: #13875C;
         }
 
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 18px;
-            background: #0b1f3a;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
+        /* LOADING AND EMPTY ROWS */
+
+        .rentals-table td[colspan] {
+            text-align: center;
+            padding: 35px 15px;
+            color: #8995AD;
+            font-size: 14px;
         }
+
+        /* FOOTER */
+
+        .rentals-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #8995AD;
+            font-size: 12px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            .rentals-container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .rentals-heading h1 {
+                font-size: 26px;
+            }
+
+            .rentals-content {
+                padding: 20px 15px;
+            }
+
+            .rentals-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .rental-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .rental-search {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .rental-controls select {
+                width: 100%;
+            }
+
+            .rentals-table th,
+            .rentals-table td {
+                padding: 13px;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            .rentals-heading h1 {
+                font-size: 23px;
+            }
+
+            .rentals-content {
+                padding: 16px 12px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="rentals-container">
+    <main class="rentals-container">
 
-        <a href="admin.html" class="back-btn">
-            ← Back to Admin Dashboard
-        </a>
+        <!-- PAGE HEADER -->
 
-        <h1>📚 Rental Records</h1>
+        <header class="rentals-header">
 
-        <!-- Search and Filter -->
+            <div class="rentals-heading">
 
-        <div class="rental-controls">
+                <h1>Rental Records</h1>
 
-            <input
-                type="text"
-                id="rentalSearch"
-                placeholder="🔍 Search student, registration no. or book..."
-            >
+                <p>
+                    Monitor student borrowing activity and book return history.
+                </p>
 
-            <select id="statusFilter">
+            </div>
 
-                <option value="all">
-                    All Records
-                </option>
+            <a href="admin.html" class="back-btn">
+                ← Back to Dashboard
+            </a>
 
-                <option value="active">
-                    Active
-                </option>
-
-                <option value="returned">
-                    Returned
-                </option>
-
-            </select>
-
-        </div>
+        </header>
 
 
-        <!-- Rental Table -->
+        <!-- RENTAL CONTENT -->
 
-        <table class="rentals-table">
+        <section class="rentals-content">
 
-            <thead>
+            <h2 class="section-heading">
+                Borrowing History
+            </h2>
 
-                <tr>
-                    <th>Student Name</th>
-                    <th>Registration No.</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Branch</th>
-                    <th>Year</th>
-                    <th>Book</th>
-                    <th>Borrowed Date</th>
-                    <th>Returned Date</th>
-                    <th>Status</th>
-                </tr>
-
-            </thead>
+            <p class="section-description">
+                View and manage student rental information.
+            </p>
 
 
-            <tbody id="rentalsTableBody">
+            <!-- SEARCH AND FILTER -->
 
-                <tr>
-                    <td colspan="10">
-                        Loading rental records...
-                    </td>
-                </tr>
+            <div class="rental-controls">
 
-            </tbody>
+                <div class="rental-search">
 
-        </table>
+                    <input
+                        type="text"
+                        id="rentalSearch"
+                        placeholder="Search student, registration number or book..."
+                        aria-label="Search rental records"
+                    >
 
-    </div>
+                </div>
 
+
+                <select
+                    id="statusFilter"
+                    aria-label="Filter rental records by status"
+                >
+
+                    <option value="all">
+                        All Records
+                    </option>
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="returned">
+                        Returned
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- RENTAL TABLE -->
+
+            <div class="rentals-table-wrapper">
+
+                <table class="rentals-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Registration No.</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Branch</th>
+                            <th>Year</th>
+                            <th>Book</th>
+                            <th>Borrowed Date</th>
+                            <th>Returned Date</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="rentalsTableBody">
+
+                        <tr>
+                            <td colspan="10">
+                                Loading rental records...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="rentals-footer">
+
+            © Library Management System | Developed by Harshitha Minnikanti
+
+        </footer>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
 
     <script src="js/api.js"></script>
     <script src="js/auth.js"></script>

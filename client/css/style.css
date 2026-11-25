@@ -1,8 +1,21 @@
-/* Google Font */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
-/* Reset */
+:root {
+    --primary: #3157D5;
+    --primary-dark: #2445B5;
+    --primary-light: #EEF2FF;
+    --background: #F5F7FC;
+    --surface: #FFFFFF;
+    --text: #172033;
+    --muted: #778198;
+    --border: #E6EAF2;
+    --success: #15966A;
+    --danger: #E34D59;
+    --warning: #E9A23B;
+    --radius: 16px;
+    --shadow: 0 8px 30px rgba(32, 50, 90, 0.07);
+}
 
 * {
     margin: 0;
@@ -10,37 +23,39 @@
     box-sizing: border-box;
 }
 
-/* Body */
-
-body {
-    font-family: "Poppins", sans-serif;
-    background: #021526;
-    color: #ffffff;
-    min-height: 100vh;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Main Container */
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
 
 .container {
     width: 92%;
-    max-width: 1300px;
-    margin: 30px auto;
+    max-width: 1400px;
+    margin: 35px auto;
+    flex: 1;
 }
 
-/* Sections */
 
-section {
-    margin-bottom: 25px;
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    line-height: 1.3;
 }
-
-/* Links */
 
 a {
     text-decoration: none;
     color: inherit;
 }
-
-/* Buttons */
 
 button {
     font-family: inherit;
@@ -49,33 +64,33 @@ button {
     outline: none;
 }
 
-/* Inputs */
-
-input,
-select,
-textarea {
+input, select, textarea {
     font-family: inherit;
     outline: none;
 }
-
-/* Images */
 
 img {
     max-width: 100%;
     display: block;
 }
 
-/* Table */
+.container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 35px auto;
+}
+
+section {
+    margin-bottom: 25px;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-/* Utility Classes */
-
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .text-center {
@@ -90,40 +105,69 @@ table {
     margin-bottom: 20px;
 }
 
-.shadow {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-}
-
 .card {
-    background: #032444;
-    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 25px;
+    box-shadow: var(--shadow);
 }
 
-/* Scrollbar */
+.shadow {
+    box-shadow: var(--shadow);
+}
+
+button, a, input, select {
+    transition: all 0.25s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(49, 87, 213, 0.25);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: #DCE5FF;
+    color: #2445B5;
+}
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #021526;
+    background: #F0F2F7;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #0A4D8C;
-    border-radius: 10px;
+    background: #B9C5DE;
+    border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #1468B3;
+    background: #8799BE;
 }
-
-/* Responsive */
 
 @media (max-width: 768px) {
     .container {
-        width: 95%;
-        margin: 20px auto;
+        width: 94%;
+        margin: 22px auto;
     }
+}
+
+
+body > .footer {
+    margin-top: auto;
+}
+
+body > main {
+    flex: 1;
+}
+
+body > .rentals-container {
+    flex: 1;
+    min-height: 0;
 }

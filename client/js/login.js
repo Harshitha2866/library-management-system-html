@@ -1,155 +1,115 @@
-// LOGIN FUNCTION
 
 async function login(role) {
+    const usernameInput = document.getElementById(`${role}Username`);
+    const passwordInput = document.getElementById(`${role}Password`);
+    const message = document.getElementById(`${role}Message`);
 
-    // Get the correct input fields
-    const usernameInput =
-        document.getElementById(`${role}Username`);
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
 
-    const passwordInput =
-        document.getElementById(`${role}Password`);
-
-    const message =
-        document.getElementById(`${role}Message`);
-
-
-    // Get entered values
-    const username =
-        usernameInput.value.trim();
-
-    const password =
-        passwordInput.value;
-
-
-    // Clear previous message
     message.textContent = "";
 
-
-    // Check empty fields
     if (!username || !password) {
-
-        message.textContent =
-            "Please enter username and password.";
-
+        message.textContent = "Please enter username and password.";
         return;
     }
 
-
     try {
+        const response = await fetch(`${AUTH_URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password,
+                role: role
+            })
+        });
 
-        // Send login request to backend
-        const response = await fetch(
-            `${AUTH_URL}/login`,
-            {
-                method: "POST",
+        const data = await response.json();
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                    role: role
-                })
-            }
-        );
-
-
-        // Get backend response
-        const data =
-            await response.json();
-
-
-        // Login failed
         if (!response.ok) {
-
-            message.textContent =
-                data.message || "Login failed.";
-
+            message.textContent = data.message || "Login failed.";
             return;
         }
 
-
-        // LOGIN SUCCESSFUL
-
-        // Save authentication token
-        localStorage.setItem(
-            "libraryToken",
-            data.token
-        );
-
-
-        // Save user information
-        localStorage.setItem(
-            "libraryUser",
-            JSON.stringify(data.user)
-        );
-
-
-        // Redirect according to role
+        localStorage.setItem("libraryToken", data.token);
+        localStorage.setItem("libraryUser", JSON.stringify(data.user));
 
         if (role === "admin") {
-
-            window.location.href =
-                "admin.html";
-
+            window.location.href = "admin.html";
         } else {
-
-            window.location.href =
-                "user.html";
+            window.location.href = "user.html";
         }
 
-
     } catch (error) {
-
-        console.error(
-            "Login Error:",
-            error
-        );
-
-        message.textContent =
-            "Unable to connect to the server.";
+        console.error("Login Error:", error);
+        message.textContent = "Unable to connect to the server.";
     }
 }
 
+function clearLoginFields(role) {
+    const username = document.getElementById(`${role}Username`);
+    const password = document.getElementById(`${role}Password`);
+    const message = document.getElementById(`${role}Message`);
 
+    if (username) username.value = "";
+    if (password) password.value = "";
+    if (message) message.textContent = "";
+}
 
-// USER LOGIN FORM
+function clearAllLoginFields() {
+    clearLoginFields("user");
+    clearLoginFields("admin");
+}
 
-const userLoginForm =
-    document.getElementById("userLoginForm");
+document.addEventListener("DOMContentLoaded", () => {
+    const userUsername = document.getElementById("userUsername");
+    const userPassword = document.getElementById("userPassword");
+    const adminUsername = document.getElementById("adminUsername");
+    const adminPassword = document.getElementById("adminPassword");
 
+    [userUsername, adminUsername].forEach(input => {
+        if (input) input.setAttribute("autocomplete", "off");
+    });
 
-if (userLoginForm) {
+    [userPassword, adminPassword].forEach(input => {
+        if (input) input.setAttribute("autocomplete", "new-password");
+    });
 
-    userLoginForm.addEventListener(
-        "submit",
-        function (event) {
+    clearAllLoginFields();
 
+    document.addEventListener("click", event => {
+        const tab = event.target.closest(".login-tab");
+
+        if (!tab) return;
+
+        const selectedRole =
+            tab.textContent.toLowerCase().includes("admin")
+                ? "admin"
+                : "user";
+
+        clearLoginFields(
+            selectedRole === "admin" ? "user" : "admin"
+        );
+    });
+
+    const userLoginForm = document.getElementById("userLoginForm");
+
+    if (userLoginForm) {
+        userLoginForm.addEventListener("submit", event => {
             event.preventDefault();
-
             login("user");
-        }
-    );
-}
+        });
+    }
 
+    const adminLoginForm = document.getElementById("adminLoginForm");
 
-// ADMIN LOGIN FORM
-
-const adminLoginForm =
-    document.getElementById("adminLoginForm");
-
-
-if (adminLoginForm) {
-
-    adminLoginForm.addEventListener(
-        "submit",
-        function (event) {
-
+    if (adminLoginForm) {
+        adminLoginForm.addEventListener("submit", event => {
             event.preventDefault();
-
             login("admin");
-        }
-    );
-}
+        });
+    }
+});
